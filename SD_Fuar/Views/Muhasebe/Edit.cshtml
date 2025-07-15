@@ -1,0 +1,80 @@
+@model SD_Fuar.Models.MuhasebeKaydi
+@{
+    ViewData["Title"] = "Muhasebe Kaydı Düzenle";
+}
+<h1>Muhasebe Kaydı Düzenle</h1>
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="SozlesmeId" class="control-label">Sözleşme</label>
+                <input asp-for="SozlesmeId" class="form-control" />
+                <span asp-validation-for="SozlesmeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tarih" class="control-label">Tarih</label>
+                <input asp-for="Tarih" class="form-control" type="date" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label">Açıklama</label>
+                <input asp-for="Aciklama" class="form-control" />
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tutar" class="control-label">Tutar</label>
+                <input asp-for="Tutar" class="form-control" />
+                <span asp-validation-for="Tutar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doviz" class="control-label">Döviz</label>
+                <input asp-for="Doviz" class="form-control" />
+                <span asp-validation-for="Doviz" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OdemeTarihi" class="control-label">Ödeme Tarihi</label>
+                <input asp-for="OdemeTarihi" class="form-control" type="date" />
+                <span asp-validation-for="OdemeTarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OdemeTipi" class="control-label">Ödeme Tipi</label>
+                <input asp-for="OdemeTipi" class="form-control" />
+                <span asp-validation-for="OdemeTipi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KalanBakiye" class="control-label">Kalan Bakiye</label>
+                <input asp-for="KalanBakiye" class="form-control" />
+                <span asp-validation-for="KalanBakiye" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Komisyon" class="control-label">Komisyon</label>
+                <input asp-for="Komisyon" class="form-control" />
+                <span asp-validation-for="Komisyon" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KDV" class="control-label">KDV</label>
+                <input asp-for="KDV" class="form-control" />
+                <span asp-validation-for="KDV" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KurumlarVergisi" class="control-label">Kurumlar Vergisi</label>
+                <input asp-for="KurumlarVergisi" class="form-control" />
+                <span asp-validation-for="KurumlarVergisi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="YedekAkce" class="control-label">Yedek Akçe</label>
+                <input asp-for="YedekAkce" class="form-control" />
+                <span asp-validation-for="YedekAkce" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

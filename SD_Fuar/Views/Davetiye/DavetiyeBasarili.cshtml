@@ -1,0 +1,31 @@
+@{
+    ViewData["Title"] = "Davetiye Oluşturuldu";
+}
+
+<div class="text-center">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Tebrikler!</h4>
+        <p>Davetiyeniz başarıyla oluşturuldu.</p>
+        <hr>
+        <p class="mb-0">
+            <strong>Davetiye Kodunuz: @TempData["DavetiyeKodu"]</strong>
+        </p>
+    </div>
+    
+    <div class="card">
+        <div class="card-body">
+            <h5>Önemli Bilgiler:</h5>
+            <ul class="list-unstyled">
+                <li>✓ Davetiye kodunuzu not alın</li>
+                <li>✓ Fuar girişinde bu kodu görevliye gösterin</li>
+                <li>✓ Davetiye fuar süresince geçerlidir</li>
+                <li>✓ Kodunuzu başkalarıyla paylaşmayın</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="mt-3">
+        <a asp-action="Index" class="btn btn-primary">Ana Sayfaya Dön</a>
+        <a asp-action="OnlineDavetiye" class="btn btn-success">Yeni Davetiye</a>
+    </div>
+</div> 

@@ -1,0 +1,96 @@
+@model SD_Fuar.Models.Firma
+
+@{
+    ViewData["Title"] = "Yeni Firma Ekle";
+}
+
+<h1>Yeni Firma Ekle</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label">Firma Adı</label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Yetkili" class="control-label">Yetkili Kişi</label>
+                <input asp-for="Yetkili" class="form-control" />
+                <span asp-validation-for="Yetkili" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Unvan" class="control-label">Ünvan</label>
+                <input asp-for="Unvan" class="form-control" />
+                <span asp-validation-for="Unvan" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Tel" class="control-label">Telefon</label>
+                <input asp-for="Tel" class="form-control" />
+                <span asp-validation-for="Tel" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Dahili" class="control-label">Dahili</label>
+                <input asp-for="Dahili" class="form-control" />
+                <span asp-validation-for="Dahili" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DirektTel" class="control-label">Direkt Telefon</label>
+                <input asp-for="DirektTel" class="form-control" />
+                <span asp-validation-for="DirektTel" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Eposta" class="control-label">E-posta</label>
+                <input asp-for="Eposta" class="form-control" type="email" />
+                <span asp-validation-for="Eposta" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Faks" class="control-label">Faks</label>
+                <input asp-for="Faks" class="form-control" />
+                <span asp-validation-for="Faks" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Adres" class="control-label">Adres</label>
+                <textarea asp-for="Adres" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Sehir" class="control-label">Şehir</label>
+                <input asp-for="Sehir" class="form-control" />
+                <span asp-validation-for="Sehir" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Ulke" class="control-label">Ülke</label>
+                <input asp-for="Ulke" class="form-control" />
+                <span asp-validation-for="Ulke" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Sektor" class="control-label">Sektör</label>
+                <input asp-for="Sektor" class="form-control" />
+                <span asp-validation-for="Sektor" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

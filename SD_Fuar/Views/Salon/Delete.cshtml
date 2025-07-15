@@ -1,0 +1,28 @@
+@model SD_Fuar.Models.Salon
+
+@{
+    ViewData["Title"] = "Salon Sil";
+}
+
+<h1>Salon Sil</h1>
+
+<div class="alert alert-danger">
+    <h3>Bu salonu silmek istediğinizden emin misiniz?</h3>
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Fuar.Ad)</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

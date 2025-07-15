@@ -1,0 +1,34 @@
+@model SD_Fuar.Models.Stand
+
+@{
+    ViewData["Title"] = "Stand Detayları";
+}
+
+<h1>Stand Detayları</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Kod)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Kod)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.En)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.En) m</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Boy)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Boy) m</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Metrekare)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Metrekare) m²</dd>
+        
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Salon.Ad)</dd>
+        
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Salon.Fuar.Ad)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

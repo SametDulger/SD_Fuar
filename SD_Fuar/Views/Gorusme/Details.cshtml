@@ -1,0 +1,26 @@
+@model SD_Fuar.Models.Gorusme
+@{
+    ViewData["Title"] = "Görüşme Detayları";
+}
+<h1>Görüşme Detayları</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Firma</dt>
+        <dd class="col-sm-9">@Model.FirmaId</dd>
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Model.FuarId</dd>
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Model.SalonId</dd>
+        <dt class="col-sm-3">Tarih</dt>
+        <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Görüşen Kişi</dt>
+        <dd class="col-sm-9">@Model.GorusenKisi</dd>
+        <dt class="col-sm-3">Notlar</dt>
+        <dd class="col-sm-9">@Model.Notlar</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

@@ -1,0 +1,52 @@
+@model SD_Fuar.Models.Firma
+
+@{
+    ViewData["Title"] = "Firma Detayları";
+}
+
+<h1>Firma Detayları</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Yetkili)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Yetkili)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Unvan)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Unvan)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tel)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tel)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Dahili)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Dahili)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.DirektTel)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.DirektTel)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Eposta)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Eposta)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Faks)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Faks)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Adres)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Adres)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sehir)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Sehir)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ulke)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ulke)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sektor)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Sektor)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

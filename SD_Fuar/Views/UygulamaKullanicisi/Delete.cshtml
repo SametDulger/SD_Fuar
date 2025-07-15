@@ -1,0 +1,22 @@
+@model SD_Fuar.Models.UygulamaKullanicisi
+@{
+    ViewData["Title"] = "Kullanıcı Sil";
+}
+<h1>Kullanıcı Sil</h1>
+<div class="alert alert-danger">
+    <h3>Bu kullanıcıyı silmek istediğinizden emin misiniz?</h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Kullanıcı Adı</dt>
+        <dd class="col-sm-9">@Model.KullaniciAdi</dd>
+        <dt class="col-sm-3">Rol</dt>
+        <dd class="col-sm-9">@Model.Rol</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

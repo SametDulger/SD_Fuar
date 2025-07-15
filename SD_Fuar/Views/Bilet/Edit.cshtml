@@ -1,0 +1,112 @@
+@model SD_Fuar.Models.Bilet
+
+@{
+    ViewData["Title"] = "Bilet Düzenle";
+}
+
+<h1>Bilet Düzenle</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="BiletKodu" />
+            <input type="hidden" asp-for="SatisTarihi" />
+            
+            <div class="form-group">
+                <label asp-for="Tip" class="control-label">Bilet Tipi</label>
+                <select asp-for="Tip" class="form-control">
+                    <option value="">Seçiniz</option>
+                    <option value="Günlük">Günlük</option>
+                    <option value="Fuar Süresince">Fuar Süresince</option>
+                </select>
+                <span asp-validation-for="Tip" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Fiyat" class="control-label">Fiyat</label>
+                <input asp-for="Fiyat" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Fiyat" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Doviz" class="control-label">Döviz</label>
+                <select asp-for="Doviz" class="form-control">
+                    <option value="">Seçiniz</option>
+                    <option value="TL">TL</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                </select>
+                <span asp-validation-for="Doviz" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ZiyaretciId" class="control-label">Ziyaretçi</label>
+                <select asp-for="ZiyaretciId" class="form-control">
+                    <option value="">Seçiniz</option>
+                    @foreach (var ziyaretci in ViewBag.Ziyaretciler)
+                    {
+                        <option value="@ziyaretci.Id">@ziyaretci.Ad @ziyaretci.Soyad - @ziyaretci.FirmaAdi</option>
+                    }
+                </select>
+                <span asp-validation-for="ZiyaretciId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FuarId" class="control-label">Fuar</label>
+                <select asp-for="FuarId" class="form-control">
+                    <option value="">Seçiniz</option>
+                    @foreach (var fuar in ViewBag.Fuarlar)
+                    {
+                        <option value="@fuar.Id">@fuar.Ad - @fuar.BaslangicTarihi.ToString("dd.MM.yyyy")</option>
+                    }
+                </select>
+                <span asp-validation-for="FuarId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="GecerlilikTarihi" class="control-label">Geçerlilik Tarihi</label>
+                <input asp-for="GecerlilikTarihi" class="form-control" type="date" />
+                <span asp-validation-for="GecerlilikTarihi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SatisPersoneli" class="control-label">Satış Personeli</label>
+                <input asp-for="SatisPersoneli" class="form-control" />
+                <span asp-validation-for="SatisPersoneli" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="KullanildiMi" class="control-label">Kullanıldı mı?</label>
+                <input asp-for="KullanildiMi" class="form-check-input" />
+                <span asp-validation-for="KullanildiMi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="KullanilmaTarihi" class="control-label">Kullanılma Tarihi</label>
+                <input asp-for="KullanilmaTarihi" class="form-control" type="datetime-local" />
+                <span asp-validation-for="KullanilmaTarihi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="OdemeTipi" class="control-label">Ödeme Tipi</label>
+                <select asp-for="OdemeTipi" class="form-control">
+                    <option value="">Seçiniz</option>
+                    <option value="Nakit">Nakit</option>
+                    <option value="Kredi Kartı">Kredi Kartı</option>
+                </select>
+                <span asp-validation-for="OdemeTipi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

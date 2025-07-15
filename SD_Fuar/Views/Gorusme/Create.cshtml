@@ -1,0 +1,66 @@
+@model SD_Fuar.Models.Gorusme
+
+@{
+    ViewData["Title"] = "Yeni Görüşme Ekle";
+}
+
+<h1>Yeni Görüşme Ekle</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            
+            <div class="form-group">
+                <label asp-for="FirmaId" class="control-label">Firma</label>
+                <select asp-for="FirmaId" class="form-control" asp-items="ViewBag.FirmaId">
+                    <option value="">-- Firma Seçin --</option>
+                </select>
+                <span asp-validation-for="FirmaId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FuarId" class="control-label">Fuar</label>
+                <select asp-for="FuarId" class="form-control" asp-items="ViewBag.FuarId">
+                    <option value="">-- Fuar Seçin --</option>
+                </select>
+                <span asp-validation-for="FuarId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SalonId" class="control-label">Salon</label>
+                <select asp-for="SalonId" class="form-control" asp-items="ViewBag.SalonId">
+                    <option value="">-- Salon Seçin --</option>
+                </select>
+                <span asp-validation-for="SalonId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="GorusenKisi" class="control-label">Görüşen Kişi</label>
+                <input asp-for="GorusenKisi" class="form-control" />
+                <span asp-validation-for="GorusenKisi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Tarih" class="control-label">Görüşme Tarihi</label>
+                <input asp-for="Tarih" class="form-control" type="date" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Notlar" class="control-label">Görüşme Notları</label>
+                <textarea asp-for="Notlar" class="form-control" rows="4"></textarea>
+                <span asp-validation-for="Notlar" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

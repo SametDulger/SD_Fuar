@@ -1,0 +1,54 @@
+@model IEnumerable<SD_Fuar.Models.Fuar>
+
+@{
+    ViewData["Title"] = "Fuarlar";
+}
+
+<h1>Fuarlar</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Fuar Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Ad)</th>
+            <th>@Html.DisplayNameFor(model => model.Ulke)</th>
+            <th>@Html.DisplayNameFor(model => model.Sehir)</th>
+            <th>@Html.DisplayNameFor(model => model.BaslangicTarihi)</th>
+            <th>@Html.DisplayNameFor(model => model.BitisTarihi)</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+            <td>@Html.DisplayFor(modelItem => item.Ulke)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sehir)</td>
+            <td>@item.BaslangicTarihi.ToString("dd.MM.yyyy")</td>
+            <td>@item.BitisTarihi.ToString("dd.MM.yyyy")</td>
+            <td>
+                @if (item.BitisTarihi < DateTime.Today)
+                {
+                    <span class="badge bg-secondary">Tamamlandı</span>
+                }
+                else if (item.BaslangicTarihi <= DateTime.Today && item.BitisTarihi >= DateTime.Today)
+                {
+                    <span class="badge bg-success">Aktif</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning">Yaklaşıyor</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

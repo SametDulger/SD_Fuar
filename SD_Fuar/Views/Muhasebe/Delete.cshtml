@@ -1,0 +1,42 @@
+@model SD_Fuar.Models.MuhasebeKaydi
+@{
+    ViewData["Title"] = "Muhasebe Kaydı Sil";
+}
+<h1>Muhasebe Kaydı Sil</h1>
+<div class="alert alert-danger">
+    <h3>Bu muhasebe kaydını silmek istediğinizden emin misiniz?</h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Sözleşme</dt>
+        <dd class="col-sm-9">@Model.SozlesmeId</dd>
+        <dt class="col-sm-3">Tarih</dt>
+        <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Açıklama</dt>
+        <dd class="col-sm-9">@Model.Aciklama</dd>
+        <dt class="col-sm-3">Tutar</dt>
+        <dd class="col-sm-9">@Model.Tutar</dd>
+        <dt class="col-sm-3">Döviz</dt>
+        <dd class="col-sm-9">@Model.Doviz</dd>
+        <dt class="col-sm-3">Ödeme Tarihi</dt>
+        <dd class="col-sm-9">@Model.OdemeTarihi.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Ödeme Tipi</dt>
+        <dd class="col-sm-9">@Model.OdemeTipi</dd>
+        <dt class="col-sm-3">Kalan Bakiye</dt>
+        <dd class="col-sm-9">@Model.KalanBakiye</dd>
+        <dt class="col-sm-3">Komisyon</dt>
+        <dd class="col-sm-9">@Model.Komisyon</dd>
+        <dt class="col-sm-3">KDV</dt>
+        <dd class="col-sm-9">@Model.KDV</dd>
+        <dt class="col-sm-3">Kurumlar Vergisi</dt>
+        <dd class="col-sm-9">@Model.KurumlarVergisi</dd>
+        <dt class="col-sm-3">Yedek Akçe</dt>
+        <dd class="col-sm-9">@Model.YedekAkce</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

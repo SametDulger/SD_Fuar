@@ -1,0 +1,119 @@
+@model SD_Fuar.Models.Ziyaretci
+
+@{
+    ViewData["Title"] = "Online Davetiye";
+}
+
+<h1>Online Davetiye</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>Ziyaretçi Bilgileri</h5>
+            </div>
+            <div class="card-body">
+                <form asp-action="OnlineDavetiye">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Ad" class="control-label">Ad *</label>
+                                <input asp-for="Ad" class="form-control" />
+                                <span asp-validation-for="Ad" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Soyad" class="control-label">Soyad *</label>
+                                <input asp-for="Soyad" class="form-control" />
+                                <span asp-validation-for="Soyad" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="FirmaAdi" class="control-label">Firma Adı</label>
+                        <input asp-for="FirmaAdi" class="form-control" />
+                        <span asp-validation-for="FirmaAdi" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="Adres" class="control-label">Adres</label>
+                        <textarea asp-for="Adres" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="Adres" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Tel" class="control-label">Telefon</label>
+                                <input asp-for="Tel" class="form-control" />
+                                <span asp-validation-for="Tel" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Eposta" class="control-label">E-posta</label>
+                                <input asp-for="Eposta" class="form-control" type="email" />
+                                <span asp-validation-for="Eposta" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Faks" class="control-label">Faks</label>
+                                <input asp-for="Faks" class="form-control" />
+                                <span asp-validation-for="Faks" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label asp-for="Meslek" class="control-label">Meslek</label>
+                                <input asp-for="Meslek" class="form-control" />
+                                <span asp-validation-for="Meslek" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label asp-for="FuarId" class="control-label">Fuar *</label>
+                        <select asp-for="FuarId" class="form-control">
+                            <option value="">Fuar Seçiniz</option>
+                            @foreach (var fuar in ViewBag.Fuarlar)
+                            {
+                                <option value="@fuar.Id">@fuar.Ad - @fuar.BaslangicTarihi.ToString("dd.MM.yyyy") - @fuar.BitisTarihi.ToString("dd.MM.yyyy")</option>
+                            }
+                        </select>
+                        <span asp-validation-for="FuarId" class="text-danger"></span>
+                    </div>
+                    
+                    <div class="form-group mt-3">
+                        <input type="submit" value="Davetiye Oluştur" class="btn btn-success" />
+                        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>Bilgi</h5>
+            </div>
+            <div class="card-body">
+                <p>Online davetiye oluşturarak fuarımıza katılım sağlayabilirsiniz.</p>
+                <p>Davetiye kodu e-posta adresinize gönderilecektir.</p>
+                <p>Fuar girişinde davetiye kodunuzu görevliye gösterebilirsiniz.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

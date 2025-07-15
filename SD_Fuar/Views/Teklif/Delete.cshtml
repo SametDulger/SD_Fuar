@@ -1,0 +1,42 @@
+@model SD_Fuar.Models.Teklif
+@{
+    ViewData["Title"] = "Teklif Sil";
+}
+<h1>Teklif Sil</h1>
+<div class="alert alert-danger">
+    <h3>Bu teklifi silmek istediğinizden emin misiniz?</h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Firma</dt>
+        <dd class="col-sm-9">@Model.FirmaId</dd>
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Model.FuarId</dd>
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Model.SalonId</dd>
+        <dt class="col-sm-3">Stand</dt>
+        <dd class="col-sm-9">@Model.StandId</dd>
+        <dt class="col-sm-3">Teklif Tarihi</dt>
+        <dd class="col-sm-9">@Model.TeklifTarihi.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Metrekare</dt>
+        <dd class="col-sm-9">@Model.Metrekare</dd>
+        <dt class="col-sm-3">Birim Fiyat</dt>
+        <dd class="col-sm-9">@Model.BirimFiyat</dd>
+        <dt class="col-sm-3">Döviz</dt>
+        <dd class="col-sm-9">@Model.Doviz</dd>
+        <dt class="col-sm-3">Döviz Kuru</dt>
+        <dd class="col-sm-9">@Model.DovizKuru</dd>
+        <dt class="col-sm-3">Vade Sayısı</dt>
+        <dd class="col-sm-9">@Model.VadeSayisi</dd>
+        <dt class="col-sm-3">Ödeme Planı</dt>
+        <dd class="col-sm-9">@Model.OdemePlani</dd>
+        <dt class="col-sm-3">Son Geçerlilik Tarihi</dt>
+        <dd class="col-sm-9">@Model.SonGecerlilikTarihi.ToString("dd.MM.yyyy")</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

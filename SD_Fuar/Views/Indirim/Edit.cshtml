@@ -1,0 +1,151 @@
+@model SD_Fuar.Models.Indirim
+
+@{
+    ViewData["Title"] = "İndirim Düzenle";
+}
+
+<h1>İndirim Düzenle</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="form-group">
+                <label asp-for="Ad" class="control-label">İndirim Adı</label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Tip" class="control-label">İndirim Tipi</label>
+                <select asp-for="Tip" class="form-control" id="indirimTipi">
+                    <option value="">Seçiniz</option>
+                    <option value="Yüzde">Yüzde</option>
+                    <option value="Sabit Tutar">Sabit Tutar</option>
+                </select>
+                <span asp-validation-for="Tip" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" id="oranDiv" style="display:none;">
+                <label asp-for="Oran" class="control-label">Oran (%)</label>
+                <input asp-for="Oran" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="Oran" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group" id="tutarDiv" style="display:none;">
+                <label asp-for="SabitTutar" class="control-label">Sabit Tutar</label>
+                <input asp-for="SabitTutar" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="SabitTutar" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FirmaId" class="control-label">Firma (Opsiyonel)</label>
+                <select asp-for="FirmaId" class="form-control">
+                    <option value="">Tüm Firmalar</option>
+                    @foreach (var firma in ViewBag.Firmalar)
+                    {
+                        <option value="@firma.Id">@firma.Ad</option>
+                    }
+                </select>
+                <span asp-validation-for="FirmaId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FuarId" class="control-label">Fuar (Opsiyonel)</label>
+                <select asp-for="FuarId" class="form-control">
+                    <option value="">Tüm Fuarlar</option>
+                    @foreach (var fuar in ViewBag.Fuarlar)
+                    {
+                        <option value="@fuar.Id">@fuar.Ad</option>
+                    }
+                </select>
+                <span asp-validation-for="FuarId" class="text-danger"></span>
+            </div>
+            
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BaslangicTarihi" class="control-label">Başlangıç Tarihi</label>
+                        <input asp-for="BaslangicTarihi" class="form-control" type="date" />
+                        <span asp-validation-for="BaslangicTarihi" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BitisTarihi" class="control-label">Bitiş Tarihi</label>
+                        <input asp-for="BitisTarihi" class="form-control" type="date" />
+                        <span asp-validation-for="BitisTarihi" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="MinimumKatilimSayisi" class="control-label">Minimum Katılım Sayısı</label>
+                <input asp-for="MinimumKatilimSayisi" class="form-control" type="number" />
+                <span asp-validation-for="MinimumKatilimSayisi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="MinimumTutar" class="control-label">Minimum Tutar</label>
+                <input asp-for="MinimumTutar" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="MinimumTutar" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Aciklama" class="control-label">Açıklama</label>
+                <textarea asp-for="Aciklama" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="UygulamaKosullari" class="control-label">Uygulama Koşulları</label>
+                <textarea asp-for="UygulamaKosullari" class="form-control" rows="3"></textarea>
+                <span asp-validation-for="UygulamaKosullari" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="AktifMi" class="control-label">Aktif mi?</label>
+                <input asp-for="AktifMi" class="form-check-input" />
+                <span asp-validation-for="AktifMi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script>
+        document.getElementById('indirimTipi').addEventListener('change', function() {
+            var oranDiv = document.getElementById('oranDiv');
+            var tutarDiv = document.getElementById('tutarDiv');
+            
+            if (this.value === 'Yüzde') {
+                oranDiv.style.display = 'block';
+                tutarDiv.style.display = 'none';
+            } else if (this.value === 'Sabit Tutar') {
+                oranDiv.style.display = 'none';
+                tutarDiv.style.display = 'block';
+            } else {
+                oranDiv.style.display = 'none';
+                tutarDiv.style.display = 'none';
+            }
+        });
+        
+        // Sayfa yüklendiğinde mevcut değere göre alanları göster
+        window.onload = function() {
+            var tip = document.getElementById('indirimTipi').value;
+            if (tip === 'Yüzde') {
+                document.getElementById('oranDiv').style.display = 'block';
+            } else if (tip === 'Sabit Tutar') {
+                document.getElementById('tutarDiv').style.display = 'block';
+            }
+        };
+    </script>
+} 

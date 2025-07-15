@@ -1,0 +1,30 @@
+@model SD_Fuar.Models.Gorusme
+@{
+    ViewData["Title"] = "Görüşme Sil";
+}
+<h1>Görüşme Sil</h1>
+<div class="alert alert-danger">
+    <h3>Bu görüşmeyi silmek istediğinizden emin misiniz?</h3>
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Firma</dt>
+        <dd class="col-sm-9">@Model.FirmaId</dd>
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Model.FuarId</dd>
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Model.SalonId</dd>
+        <dt class="col-sm-3">Tarih</dt>
+        <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>
+        <dt class="col-sm-3">Görüşen Kişi</dt>
+        <dd class="col-sm-9">@Model.GorusenKisi</dd>
+        <dt class="col-sm-3">Notlar</dt>
+        <dd class="col-sm-9">@Model.Notlar</dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

@@ -1,0 +1,18 @@
+@model SD_Fuar.Models.UygulamaKullanicisi
+@{
+    ViewData["Title"] = "Kullanıcı Detayları";
+}
+<h1>Kullanıcı Detayları</h1>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Kullanıcı Adı</dt>
+        <dd class="col-sm-9">@Model.KullaniciAdi</dd>
+        <dt class="col-sm-3">Rol</dt>
+        <dd class="col-sm-9">@Model.Rol</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

@@ -1,0 +1,53 @@
+@model IEnumerable<SD_Fuar.Models.Ziyaretci>
+@{
+    ViewData["Title"] = "Ziyaretçi Raporu";
+}
+<h1>Ziyaretçi Raporu</h1>
+<div class="row mb-3">
+    <div class="col-md-6">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Ziyaretçi</h5>
+                <h3>@ViewBag.ToplamZiyaretci</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Farklı Firma Sayısı</h5>
+                <h3>@ViewBag.FarkliFirmalar</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Ad</th>
+            <th>Soyad</th>
+            <th>Firma</th>
+            <th>Telefon</th>
+            <th>E-posta</th>
+            <th>Meslek</th>
+            <th>Ziyaret Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Soyad</td>
+                <td>@item.FirmaAdi</td>
+                <td>@item.Tel</td>
+                <td>@item.Eposta</td>
+                <td>@item.Meslek</td>
+                <td>@item.ZiyaretTarihi.ToString("dd.MM.yyyy")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

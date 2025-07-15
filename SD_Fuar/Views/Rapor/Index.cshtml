@@ -1,0 +1,48 @@
+@{
+    ViewData["Title"] = "Raporlar";
+}
+<h1>Raporlar</h1>
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Satış Raporları</h5>
+            </div>
+            <div class="card-body">
+                <a asp-action="SatisRaporu" class="btn btn-primary">Satış Raporu</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Fuar Raporları</h5>
+            </div>
+            <div class="card-body">
+                <a asp-action="FuarRaporu" class="btn btn-success">Fuar Raporu</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row mt-3">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Muhasebe Raporları</h5>
+            </div>
+            <div class="card-body">
+                <a asp-action="MuhasebeRaporu" class="btn btn-info">Muhasebe Raporu</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Ziyaretçi Raporları</h5>
+            </div>
+            <div class="card-body">
+                <a asp-action="ZiyaretciRaporu" class="btn btn-warning">Ziyaretçi Raporu</a>
+            </div>
+        </div>
+    </div>
+</div> 
