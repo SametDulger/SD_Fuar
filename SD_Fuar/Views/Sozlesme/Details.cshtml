@@ -1,0 +1,76 @@
+@model SD_Fuar.Models.Sozlesme
+
+@{
+    ViewData["Title"] = "Sözleşme Detayları";
+}
+
+<h1>Sözleşme Detayları</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Firma</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Firma.Ad)</dd>
+        
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Fuar.Ad)</dd>
+        
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Salon.Ad)</dd>
+        
+        <dt class="col-sm-3">Stand</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Stand.Kod)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tarih)</dt>
+        <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SozlesmeTipi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SozlesmeTipi)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.StandTipi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.StandTipi)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Metrekare)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Metrekare) m²</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BirimFiyat)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.BirimFiyat)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Doviz)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Doviz)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.DovizKuru)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.DovizKuru)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.IndirimOrani)</dt>
+        <dd class="col-sm-9">%@Html.DisplayFor(model => model.IndirimOrani)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.VadeSayisi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.VadeSayisi)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.OdemePlani)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.OdemePlani)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SonGecerlilikTarihi)</dt>
+        <dd class="col-sm-9">@Model.SonGecerlilikTarihi.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ImzaDurumu)</dt>
+        <dd class="col-sm-9">
+            @if (Model.ImzaDurumu == "Alındı")
+            {
+                <span class="badge bg-success">@Model.ImzaDurumu</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">@Model.ImzaDurumu</span>
+            }
+        </dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.UcretsizVerilenMetrekare)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.UcretsizVerilenMetrekare) m²</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

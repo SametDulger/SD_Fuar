@@ -1,0 +1,46 @@
+@model SD_Fuar.Models.Firma
+
+@{
+    ViewData["Title"] = "Firma Sil";
+}
+
+<h1>Firma Sil</h1>
+
+<div class="alert alert-danger">
+    <h3>Bu firmayı silmek istediğinizden emin misiniz?</h3>
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Yetkili)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Yetkili)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Unvan)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Unvan)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tel)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tel)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Eposta)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Eposta)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sehir)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Sehir)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ulke)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ulke)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sektor)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Sektor)</dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

@@ -1,0 +1,47 @@
+@model SD_Fuar.Models.Fuar
+
+@{
+    ViewData["Title"] = "Fuar Detayları";
+}
+
+<h1>Fuar Detayları</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ulke)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ulke)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Sehir)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Sehir)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BaslangicTarihi)</dt>
+        <dd class="col-sm-9">@Model.BaslangicTarihi.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BitisTarihi)</dt>
+        <dd class="col-sm-9">@Model.BitisTarihi.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-3">Durum</dt>
+        <dd class="col-sm-9">
+            @if (Model.BitisTarihi < DateTime.Today)
+            {
+                <span class="badge bg-secondary">Tamamlandı</span>
+            }
+            else if (Model.BaslangicTarihi <= DateTime.Today && Model.BitisTarihi >= DateTime.Today)
+            {
+                <span class="badge bg-success">Aktif</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">Yaklaşıyor</span>
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

@@ -1,0 +1,59 @@
+@model SD_Fuar.Models.Indirim
+
+@{
+    ViewData["Title"] = "İndirim Sil";
+}
+
+<h1>İndirim Sil</h1>
+
+<h3>Bu indirimi silmek istediğinizden emin misiniz?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">İndirim Adı</dt>
+        <dd class="col-sm-10">@Model.Ad</dd>
+        
+        <dt class="col-sm-2">Tip</dt>
+        <dd class="col-sm-10">@Model.Tip</dd>
+        
+        @if (Model.Tip == "Yüzde")
+        {
+            <dt class="col-sm-2">Oran</dt>
+            <dd class="col-sm-10">%@Model.Oran</dd>
+        }
+        else if (Model.Tip == "Sabit Tutar")
+        {
+            <dt class="col-sm-2">Sabit Tutar</dt>
+            <dd class="col-sm-10">@Model.SabitTutar.ToString("N2")</dd>
+        }
+        
+        <dt class="col-sm-2">Firma</dt>
+        <dd class="col-sm-10">@(Model.Firma?.Ad ?? "Tüm Firmalar")</dd>
+        
+        <dt class="col-sm-2">Fuar</dt>
+        <dd class="col-sm-10">@(Model.Fuar?.Ad ?? "Tüm Fuarlar")</dd>
+        
+        <dt class="col-sm-2">Başlangıç Tarihi</dt>
+        <dd class="col-sm-10">@Model.BaslangicTarihi.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-2">Bitiş Tarihi</dt>
+        <dd class="col-sm-10">@Model.BitisTarihi.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-2">Durum</dt>
+        <dd class="col-sm-10">
+            @if (Model.AktifMi)
+            {
+                <span class="badge bg-success">Aktif</span>
+            }
+            else
+            {
+                <span class="badge bg-secondary">Pasif</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

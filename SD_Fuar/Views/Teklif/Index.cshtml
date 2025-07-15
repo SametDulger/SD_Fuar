@@ -1,0 +1,45 @@
+@model IEnumerable<SD_Fuar.Models.Teklif>
+
+@{
+    ViewData["Title"] = "Teklifler";
+}
+
+<h1>Teklifler</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Teklif Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Firma</th>
+            <th>Fuar</th>
+            <th>Salon</th>
+            <th>Stand</th>
+            <th>Teklif Tarihi</th>
+            <th>m²</th>
+            <th>Birim Fiyat</th>
+            <th>Döviz</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Firma?.Ad</td>
+            <td>@item.Fuar?.Ad</td>
+            <td>@item.Salon?.Ad</td>
+            <td>@item.Stand?.Kod</td>
+            <td>@item.TeklifTarihi.ToString("dd.MM.yyyy")</td>
+            <td>@item.Metrekare</td>
+            <td>@item.BirimFiyat</td>
+            <td>@item.Doviz</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

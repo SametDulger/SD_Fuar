@@ -1,0 +1,63 @@
+@model IEnumerable<SD_Fuar.Models.Sozlesme>
+@{
+    ViewData["Title"] = "Satış Raporu";
+}
+<h1>Satış Raporu</h1>
+<div class="row mb-3">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Sözleşme</h5>
+                <h3>@ViewBag.ToplamSozlesme</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Gelir</h5>
+                <h3>@ViewBag.ToplamGelir.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">Ortalama Metrekare</h5>
+                <h3>@ViewBag.OrtalamaMetrekare.ToString("F1") m²</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Firma</th>
+            <th>Fuar</th>
+            <th>Salon</th>
+            <th>Stand</th>
+            <th>Tarih</th>
+            <th>Metrekare</th>
+            <th>Birim Fiyat</th>
+            <th>Toplam</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Firma?.Ad</td>
+                <td>@item.Fuar?.Ad</td>
+                <td>@item.Salon?.Ad</td>
+                <td>@item.Stand?.Kod</td>
+                <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+                <td>@item.Metrekare m²</td>
+                <td>@item.BirimFiyat.ToString("C")</td>
+                <td>@((item.BirimFiyat * (decimal)item.Metrekare).ToString("C"))</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

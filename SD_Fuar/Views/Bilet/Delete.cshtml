@@ -1,0 +1,48 @@
+@model SD_Fuar.Models.Bilet
+
+@{
+    ViewData["Title"] = "Bilet Sil";
+}
+
+<h1>Bilet Sil</h1>
+
+<h3>Bu bileti silmek istediğinizden emin misiniz?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Bilet Kodu</dt>
+        <dd class="col-sm-10">@Model.BiletKodu</dd>
+        
+        <dt class="col-sm-2">Tip</dt>
+        <dd class="col-sm-10">@Model.Tip</dd>
+        
+        <dt class="col-sm-2">Fiyat</dt>
+        <dd class="col-sm-10">@Model.Fiyat.ToString("N2") @Model.Doviz</dd>
+        
+        <dt class="col-sm-2">Ziyaretçi</dt>
+        <dd class="col-sm-10">@(Model.Ziyaretci?.Ad + " " + Model.Ziyaretci?.Soyad)</dd>
+        
+        <dt class="col-sm-2">Fuar</dt>
+        <dd class="col-sm-10">@Model.Fuar?.Ad</dd>
+        
+        <dt class="col-sm-2">Satış Tarihi</dt>
+        <dd class="col-sm-10">@Model.SatisTarihi.ToString("dd.MM.yyyy HH:mm")</dd>
+        
+        <dt class="col-sm-2">Durum</dt>
+        <dd class="col-sm-10">
+            @if (Model.KullanildiMi)
+            {
+                <span class="badge bg-success">Kullanıldı</span>
+            }
+            else
+            {
+                <span class="badge bg-primary">Aktif</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

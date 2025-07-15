@@ -1,0 +1,42 @@
+@model SD_Fuar.Models.UygulamaKullanicisi
+@{
+    ViewData["Title"] = "Kullanıcı Düzenle";
+}
+<h1>Kullanıcı Düzenle</h1>
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="KullaniciAdi" class="control-label">Kullanıcı Adı</label>
+                <input asp-for="KullaniciAdi" class="form-control" />
+                <span asp-validation-for="KullaniciAdi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Sifre" class="control-label">Şifre</label>
+                <input asp-for="Sifre" class="form-control" type="password" />
+                <span asp-validation-for="Sifre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rol" class="control-label">Rol</label>
+                <select asp-for="Rol" class="form-control">
+                    <option value="">Rol Seçin</option>
+                    <option value="Yönetici">Yönetici</option>
+                    <option value="Satış Müdürü">Satış Müdürü</option>
+                    <option value="Satış Personeli">Satış Personeli</option>
+                    <option value="IT">IT</option>
+                    <option value="Muhasebe">Muhasebe</option>
+                </select>
+                <span asp-validation-for="Rol" class="text-danger"></span>
+            </div>
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

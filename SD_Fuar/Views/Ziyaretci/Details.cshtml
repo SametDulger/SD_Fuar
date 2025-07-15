@@ -1,0 +1,40 @@
+@model SD_Fuar.Models.Ziyaretci
+
+@{
+    ViewData["Title"] = "Ziyaretçi Detayları";
+}
+
+<h1>Ziyaretçi Detayları</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Ad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Ad)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Soyad)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Soyad)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.FirmaAdi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.FirmaAdi)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Adres)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Adres)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tel)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Tel)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Eposta)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Eposta)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Faks)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Faks)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Meslek)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Meslek)</dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-warning">Düzenle</a> |
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

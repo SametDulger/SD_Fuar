@@ -1,0 +1,55 @@
+@model SD_Fuar.Models.KatilimGecmisi
+
+@{
+    ViewData["Title"] = "Katılım Geçmişi Detayı";
+}
+
+<h1>Katılım Geçmişi Detayı</h1>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Firma</dt>
+        <dd class="col-sm-10">@Model.Firma.Ad</dd>
+        
+        <dt class="col-sm-2">Fuar</dt>
+        <dd class="col-sm-10">@Model.Fuar.Ad</dd>
+        
+        <dt class="col-sm-2">Yıl</dt>
+        <dd class="col-sm-10">@Model.Yil</dd>
+        
+        <dt class="col-sm-2">Kullanılan Metrekare</dt>
+        <dd class="col-sm-10">@Model.KullanilanMetrekare m²</dd>
+        
+        <dt class="col-sm-2">Toplam Tutar</dt>
+        <dd class="col-sm-10">@Model.ToplamTutar.ToString("N2") @Model.Doviz</dd>
+        
+        <dt class="col-sm-2">Döviz</dt>
+        <dd class="col-sm-10">@Model.Doviz</dd>
+        
+        <dt class="col-sm-2">Stand Tipi</dt>
+        <dd class="col-sm-10">@Model.StandTipi</dd>
+        
+        <dt class="col-sm-2">Salon Adı</dt>
+        <dd class="col-sm-10">@Model.SalonAdi</dd>
+        
+        <dt class="col-sm-2">Stand Kodu</dt>
+        <dd class="col-sm-10">@Model.StandKodu</dd>
+        
+        <dt class="col-sm-2">Ödendi mi?</dt>
+        <dd class="col-sm-10">@(Model.OdendiMi ? "Evet" : "Hayır")</dd>
+        
+        @if (Model.OdemeTarihi.HasValue)
+        {
+            <dt class="col-sm-2">Ödeme Tarihi</dt>
+            <dd class="col-sm-10">@Model.OdemeTarihi.Value.ToString("dd.MM.yyyy")</dd>
+        }
+        
+        <dt class="col-sm-2">Notlar</dt>
+        <dd class="col-sm-10">@Model.Notlar</dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Düzenle</a>
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

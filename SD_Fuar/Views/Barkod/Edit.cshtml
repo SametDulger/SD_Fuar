@@ -1,0 +1,77 @@
+@model SD_Fuar.Models.Barkod
+
+@{
+    ViewData["Title"] = "Barkod Düzenle";
+}
+
+<h1>Barkod Düzenle</h1>
+
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="BarkodKodu" />
+            <input type="hidden" asp-for="OlusturmaTarihi" />
+            
+            <div class="form-group">
+                <label asp-for="Tip" class="control-label">Tip</label>
+                <select asp-for="Tip" class="form-control">
+                    <option value="">Seçiniz</option>
+                    <option value="Davetiye">Davetiye</option>
+                    <option value="Bilet">Bilet</option>
+                </select>
+                <span asp-validation-for="Tip" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ZiyaretciId" class="control-label">Ziyaretçi</label>
+                <select asp-for="ZiyaretciId" class="form-control">
+                    <option value="">Seçiniz</option>
+                    @foreach (var ziyaretci in ViewBag.Ziyaretciler)
+                    {
+                        <option value="@ziyaretci.Id">@ziyaretci.Ad @ziyaretci.Soyad - @ziyaretci.FirmaAdi</option>
+                    }
+                </select>
+                <span asp-validation-for="ZiyaretciId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="GecerlilikTarihi" class="control-label">Geçerlilik Tarihi</label>
+                <input asp-for="GecerlilikTarihi" class="form-control" type="date" />
+                <span asp-validation-for="GecerlilikTarihi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="KullanildiMi" class="control-label">Kullanıldı mı?</label>
+                <input asp-for="KullanildiMi" class="form-check-input" />
+                <span asp-validation-for="KullanildiMi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="KullanilmaTarihi" class="control-label">Kullanılma Tarihi</label>
+                <input asp-for="KullanilmaTarihi" class="form-control" type="datetime-local" />
+                <span asp-validation-for="KullanilmaTarihi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Durum" class="control-label">Durum</label>
+                <select asp-for="Durum" class="form-control">
+                    <option value="Aktif">Aktif</option>
+                    <option value="Pasif">Pasif</option>
+                    <option value="Kullanıldı">Kullanıldı</option>
+                </select>
+                <span asp-validation-for="Durum" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 

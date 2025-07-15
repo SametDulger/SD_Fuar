@@ -1,0 +1,45 @@
+@model IEnumerable<SD_Fuar.Models.Firma>
+
+@{
+    ViewData["Title"] = "Firmalar";
+}
+
+<h1>Firmalar</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Firma Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Ad)</th>
+            <th>@Html.DisplayNameFor(model => model.Yetkili)</th>
+            <th>@Html.DisplayNameFor(model => model.Unvan)</th>
+            <th>@Html.DisplayNameFor(model => model.Tel)</th>
+            <th>@Html.DisplayNameFor(model => model.Eposta)</th>
+            <th>@Html.DisplayNameFor(model => model.Sehir)</th>
+            <th>@Html.DisplayNameFor(model => model.Ulke)</th>
+            <th>@Html.DisplayNameFor(model => model.Sektor)</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Ad)</td>
+            <td>@Html.DisplayFor(modelItem => item.Yetkili)</td>
+            <td>@Html.DisplayFor(modelItem => item.Unvan)</td>
+            <td>@Html.DisplayFor(modelItem => item.Tel)</td>
+            <td>@Html.DisplayFor(modelItem => item.Eposta)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sehir)</td>
+            <td>@Html.DisplayFor(modelItem => item.Ulke)</td>
+            <td>@Html.DisplayFor(modelItem => item.Sektor)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

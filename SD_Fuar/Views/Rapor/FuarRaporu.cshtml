@@ -1,0 +1,50 @@
+@model IEnumerable<SD_Fuar.Models.Fuar>
+@{
+    ViewData["Title"] = "Fuar Raporu";
+}
+<h1>Fuar Raporu</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Fuar Adı</th>
+            <th>Ülke</th>
+            <th>Şehir</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>Salon Sayısı</th>
+            <th>Stand Sayısı</th>
+            <th>Durum</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Ad</td>
+                <td>@item.Ulke</td>
+                <td>@item.Sehir</td>
+                <td>@item.BaslangicTarihi.ToString("dd.MM.yyyy")</td>
+                <td>@item.BitisTarihi.ToString("dd.MM.yyyy")</td>
+                <td>@item.Salonlar.Count</td>
+                <td>@item.Salonlar.Sum(s => s.Standlar.Count)</td>
+                <td>
+                    @if (item.BitisTarihi < DateTime.Today)
+                    {
+                        <span class="badge bg-secondary">Tamamlandı</span>
+                    }
+                    else if (item.BaslangicTarihi <= DateTime.Today && item.BitisTarihi >= DateTime.Today)
+                    {
+                        <span class="badge bg-success">Aktif</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Yaklaşıyor</span>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

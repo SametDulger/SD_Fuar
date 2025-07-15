@@ -1,0 +1,41 @@
+@model IEnumerable<SD_Fuar.Models.Stand>
+
+@{
+    ViewData["Title"] = "Standlar";
+}
+
+<h1>Standlar</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Stand Ekle</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.Kod)</th>
+            <th>@Html.DisplayNameFor(model => model.En)</th>
+            <th>@Html.DisplayNameFor(model => model.Boy)</th>
+            <th>@Html.DisplayNameFor(model => model.Metrekare)</th>
+            <th>Salon</th>
+            <th>Fuar</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.Kod)</td>
+            <td>@Html.DisplayFor(modelItem => item.En) m</td>
+            <td>@Html.DisplayFor(modelItem => item.Boy) m</td>
+            <td>@Html.DisplayFor(modelItem => item.Metrekare) m²</td>
+            <td>@Html.DisplayFor(modelItem => item.Salon.Ad)</td>
+            <td>@Html.DisplayFor(modelItem => item.Salon.Fuar.Ad)</td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Düzenle</a> |
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Detay</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

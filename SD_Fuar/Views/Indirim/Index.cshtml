@@ -1,0 +1,63 @@
+@model IEnumerable<SD_Fuar.Models.Indirim>
+
+@{
+    ViewData["Title"] = "İndirimler";
+}
+
+<h1>İndirimler</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni İndirim Oluştur</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>İndirim Adı</th>
+            <th>Tip</th>
+            <th>Oran/Tutar</th>
+            <th>Firma</th>
+            <th>Fuar</th>
+            <th>Başlangıç</th>
+            <th>Bitiş</th>
+            <th>Durum</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Ad</td>
+            <td>@item.Tip</td>
+            <td>
+                @if (item.Tip == "Yüzde")
+                {
+                    <span>%@item.Oran</span>
+                }
+                else
+                {
+                    <span>@item.SabitTutar.ToString("N2")</span>
+                }
+            </td>
+            <td>@(item.Firma?.Ad ?? "Tüm Firmalar")</td>
+            <td>@(item.Fuar?.Ad ?? "Tüm Fuarlar")</td>
+            <td>@item.BaslangicTarihi.ToString("dd.MM.yyyy")</td>
+            <td>@item.BitisTarihi.ToString("dd.MM.yyyy")</td>
+            <td>
+                @if (item.AktifMi)
+                {
+                    <span class="badge bg-success">Aktif</span>
+                }
+                else
+                {
+                    <span class="badge bg-secondary">Pasif</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detay</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

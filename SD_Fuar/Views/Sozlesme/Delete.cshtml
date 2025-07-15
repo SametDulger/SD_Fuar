@@ -1,0 +1,58 @@
+@model SD_Fuar.Models.Sozlesme
+
+@{
+    ViewData["Title"] = "Sözleşme Sil";
+}
+
+<h1>Sözleşme Sil</h1>
+
+<div class="alert alert-danger">
+    <h3>Bu sözleşmeyi silmek istediğinizden emin misiniz?</h3>
+</div>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-3">Firma</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Firma.Ad)</dd>
+        
+        <dt class="col-sm-3">Fuar</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Fuar.Ad)</dd>
+        
+        <dt class="col-sm-3">Salon</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Salon.Ad)</dd>
+        
+        <dt class="col-sm-3">Stand</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Stand.Kod)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tarih)</dt>
+        <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.SozlesmeTipi)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.SozlesmeTipi)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Metrekare)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.Metrekare) m²</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.BirimFiyat)</dt>
+        <dd class="col-sm-9">@Html.DisplayFor(model => model.BirimFiyat) @Html.DisplayFor(model => model.Doviz)</dd>
+        
+        <dt class="col-sm-3">@Html.DisplayNameFor(model => model.ImzaDurumu)</dt>
+        <dd class="col-sm-9">
+            @if (Model.ImzaDurumu == "Alındı")
+            {
+                <span class="badge bg-success">@Model.ImzaDurumu</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">@Model.ImzaDurumu</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

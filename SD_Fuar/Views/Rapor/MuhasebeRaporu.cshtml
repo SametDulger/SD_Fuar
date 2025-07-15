@@ -1,0 +1,69 @@
+@model IEnumerable<SD_Fuar.Models.MuhasebeKaydi>
+@{
+    ViewData["Title"] = "Muhasebe Raporu";
+}
+<h1>Muhasebe Raporu</h1>
+<div class="row mb-3">
+    <div class="col-md-3">
+        <div class="card bg-primary text-white">
+            <div class="card-body">
+                <h5 class="card-title">Toplam Gelir</h5>
+                <h3>@ViewBag.ToplamGelir.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-success text-white">
+            <div class="card-body">
+                <h5 class="card-title">USD Toplam</h5>
+                <h3>@ViewBag.USDToplam.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-info text-white">
+            <div class="card-body">
+                <h5 class="card-title">EUR Toplam</h5>
+                <h3>@ViewBag.EURToplam.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card bg-warning text-white">
+            <div class="card-body">
+                <h5 class="card-title">TL Toplam</h5>
+                <h3>@ViewBag.TLToplam.ToString("C")</h3>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Tarih</th>
+            <th>Açıklama</th>
+            <th>Tutar</th>
+            <th>Döviz</th>
+            <th>Ödeme Tarihi</th>
+            <th>Ödeme Tipi</th>
+            <th>Kalan Bakiye</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
+                <td>@item.Aciklama</td>
+                <td>@item.Tutar.ToString("C")</td>
+                <td>@item.Doviz</td>
+                <td>@item.OdemeTarihi.ToString("dd.MM.yyyy")</td>
+                <td>@item.OdemeTipi</td>
+                <td>@item.KalanBakiye.ToString("C")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+</div> 

@@ -1,0 +1,54 @@
+@model IEnumerable<SD_Fuar.Models.KatilimGecmisi>
+
+@{
+    ViewData["Title"] = "Katılım Geçmişi";
+}
+
+<h1>Katılım Geçmişi</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Yeni Kayıt Ekle</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Firma</th>
+            <th>Fuar</th>
+            <th>Yıl</th>
+            <th>Metrekare</th>
+            <th>Toplam Tutar</th>
+            <th>Döviz</th>
+            <th>Stand Tipi</th>
+            <th>Ödeme Durumu</th>
+            <th>İşlemler</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>@item.Firma.Ad</td>
+            <td>@item.Fuar.Ad</td>
+            <td>@item.Yil</td>
+            <td>@item.KullanilanMetrekare m²</td>
+            <td>@item.ToplamTutar.ToString("N2") @item.Doviz</td>
+            <td>@item.Doviz</td>
+            <td>@item.StandTipi</td>
+            <td>
+                @if (item.OdendiMi)
+                {
+                    <span class="badge bg-success">Ödendi</span>
+                }
+                else
+                {
+                    <span class="badge bg-warning">Bekliyor</span>
+                }
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info btn-sm">Detay</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm">Düzenle</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm">Sil</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table> 

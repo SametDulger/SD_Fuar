@@ -1,0 +1,48 @@
+@model SD_Fuar.Models.KatilimGecmisi
+
+@{
+    ViewData["Title"] = "Katılım Geçmişi Sil";
+}
+
+<h1>Katılım Geçmişi Sil</h1>
+
+<h3>Bu katılım geçmişi kaydını silmek istediğinizden emin misiniz?</h3>
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Firma</dt>
+        <dd class="col-sm-10">@Model.Firma.Ad</dd>
+        
+        <dt class="col-sm-2">Fuar</dt>
+        <dd class="col-sm-10">@Model.Fuar.Ad</dd>
+        
+        <dt class="col-sm-2">Yıl</dt>
+        <dd class="col-sm-10">@Model.Yil</dd>
+        
+        <dt class="col-sm-2">Kullanılan Metrekare</dt>
+        <dd class="col-sm-10">@Model.KullanilanMetrekare m²</dd>
+        
+        <dt class="col-sm-2">Toplam Tutar</dt>
+        <dd class="col-sm-10">@Model.ToplamTutar.ToString("N2") @Model.Doviz</dd>
+        
+        <dt class="col-sm-2">Stand Tipi</dt>
+        <dd class="col-sm-10">@Model.StandTipi</dd>
+        
+        <dt class="col-sm-2">Ödeme Durumu</dt>
+        <dd class="col-sm-10">
+            @if (Model.OdendiMi)
+            {
+                <span class="badge bg-success">Ödendi</span>
+            }
+            else
+            {
+                <span class="badge bg-warning">Bekliyor</span>
+            }
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Sil" class="btn btn-danger" />
+        <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+    </form>
+</div> 

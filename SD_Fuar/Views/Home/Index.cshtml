@@ -1,0 +1,174 @@
+﻿@model SD_Fuar.Controllers.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Ana Sayfa";
+}
+
+<div class="text-center">
+    <h1 class="display-4">SD_Fuar Yönetim Sistemi</h1>
+    <p class="lead">FairWorks Fuar Organizasyon Sistemi</p>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Firmalar</h5>
+                        <h2 class="card-text">@Model.FirmaSayisi</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-building fa-2x"></i>
+                    </div>
+                </div>
+                <a asp-controller="Firma" asp-action="Index" class="btn btn-light btn-sm">Görüntüle</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Fuarlar</h5>
+                        <h2 class="card-text">@Model.FuarSayisi</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-calendar-alt fa-2x"></i>
+                    </div>
+                </div>
+                <a asp-controller="Fuar" asp-action="Index" class="btn btn-light btn-sm">Görüntüle</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Sözleşmeler</h5>
+                        <h2 class="card-text">@Model.SozlesmeSayisi</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-file-contract fa-2x"></i>
+                    </div>
+                </div>
+                <a asp-controller="Sozlesme" asp-action="Index" class="btn btn-light btn-sm">Görüntüle</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <h5 class="card-title">Ziyaretçiler</h5>
+                        <h2 class="card-text">@Model.ZiyaretciSayisi</h2>
+                    </div>
+                    <div class="align-self-center">
+                        <i class="fas fa-users fa-2x"></i>
+                    </div>
+                </div>
+                <a asp-controller="Ziyaretci" asp-action="Index" class="btn btn-light btn-sm">Görüntüle</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Son Eklenen Firmalar</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.SonFirmalar.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var firma in Model.SonFirmalar)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">@firma.Ad</h6>
+                                    <small class="text-muted">@firma.Yetkili - @firma.Sehir</small>
+                                </div>
+                                <a asp-controller="Firma" asp-action="Details" asp-route-id="@firma.Id" class="btn btn-sm btn-outline-primary">Detay</a>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">Henüz firma eklenmemiş.</p>
+                }
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>Aktif Fuarlar</h5>
+            </div>
+            <div class="card-body">
+                @if (Model.AktifFuarlar.Any())
+                {
+                    <div class="list-group list-group-flush">
+                        @foreach (var fuar in Model.AktifFuarlar)
+                        {
+                            <div class="list-group-item d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1">@fuar.Ad</h6>
+                                    <small class="text-muted">@fuar.Sehir - @fuar.BaslangicTarihi.ToString("dd.MM.yyyy") - @fuar.BitisTarihi.ToString("dd.MM.yyyy")</small>
+                                </div>
+                                <a asp-controller="Fuar" asp-action="Details" asp-route-id="@fuar.Id" class="btn btn-sm btn-outline-success">Detay</a>
+                            </div>
+                        }
+                    </div>
+                }
+                else
+                {
+                    <p class="text-muted">Aktif fuar bulunmuyor.</p>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>Hızlı İşlemler</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <a asp-controller="Firma" asp-action="Create" class="btn btn-primary btn-lg btn-block w-100 mb-2">
+                            <i class="fas fa-plus"></i> Yeni Firma
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Fuar" asp-action="Create" class="btn btn-success btn-lg btn-block w-100 mb-2">
+                            <i class="fas fa-plus"></i> Yeni Fuar
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Sozlesme" asp-action="Create" class="btn btn-warning btn-lg btn-block w-100 mb-2">
+                            <i class="fas fa-plus"></i> Yeni Sözleşme
+                        </a>
+                    </div>
+                    <div class="col-md-3">
+                        <a asp-controller="Ziyaretci" asp-action="Create" class="btn btn-info btn-lg btn-block w-100 mb-2">
+                            <i class="fas fa-plus"></i> Yeni Ziyaretçi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

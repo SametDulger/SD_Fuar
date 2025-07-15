@@ -1,0 +1,153 @@
+@model SD_Fuar.Models.Sozlesme
+
+@{
+    ViewData["Title"] = "Sözleşme Düzenle";
+}
+
+<h1>Sözleşme Düzenle</h1>
+
+<div class="row">
+    <div class="col-md-8">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="form-group">
+                <label asp-for="FirmaId" class="control-label">Firma</label>
+                <select asp-for="FirmaId" class="form-control" asp-items="ViewBag.FirmaId">
+                    <option value="">-- Firma Seçin --</option>
+                </select>
+                <span asp-validation-for="FirmaId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="FuarId" class="control-label">Fuar</label>
+                <select asp-for="FuarId" class="form-control" asp-items="ViewBag.FuarId">
+                    <option value="">-- Fuar Seçin --</option>
+                </select>
+                <span asp-validation-for="FuarId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SalonId" class="control-label">Salon</label>
+                <select asp-for="SalonId" class="form-control" asp-items="ViewBag.SalonId">
+                    <option value="">-- Salon Seçin --</option>
+                </select>
+                <span asp-validation-for="SalonId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="StandId" class="control-label">Stand</label>
+                <select asp-for="StandId" class="form-control" asp-items="ViewBag.StandId">
+                    <option value="">-- Stand Seçin --</option>
+                </select>
+                <span asp-validation-for="StandId" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Tarih" class="control-label">Sözleşme Tarihi</label>
+                <input asp-for="Tarih" class="form-control" type="date" />
+                <span asp-validation-for="Tarih" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SozlesmeTipi" class="control-label">Sözleşme Tipi</label>
+                <select asp-for="SozlesmeTipi" class="form-control">
+                    <option value="">-- Seçin --</option>
+                    <option value="Katılımcı Firma">Katılımcı Firma</option>
+                    <option value="Barterlı Alan">Barterlı Alan</option>
+                    <option value="Free Alan">Free Alan</option>
+                </select>
+                <span asp-validation-for="SozlesmeTipi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="StandTipi" class="control-label">Stand Tipi</label>
+                <select asp-for="StandTipi" class="form-control">
+                    <option value="">-- Seçin --</option>
+                    <option value="Hazır Konstrüksiyonlu">Hazır Konstrüksiyonlu</option>
+                    <option value="Boş Alan">Boş Alan</option>
+                </select>
+                <span asp-validation-for="StandTipi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Metrekare" class="control-label">Metrekare</label>
+                <input asp-for="Metrekare" class="form-control" type="number" step="0.1" />
+                <span asp-validation-for="Metrekare" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="BirimFiyat" class="control-label">Birim Fiyat</label>
+                <input asp-for="BirimFiyat" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="BirimFiyat" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="Doviz" class="control-label">Döviz</label>
+                <select asp-for="Doviz" class="form-control">
+                    <option value="">-- Seçin --</option>
+                    <option value="USD">USD</option>
+                    <option value="EUR">EUR</option>
+                    <option value="TL">TL</option>
+                </select>
+                <span asp-validation-for="Doviz" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="DovizKuru" class="control-label">Döviz Kuru</label>
+                <input asp-for="DovizKuru" class="form-control" type="number" step="0.01" />
+                <span asp-validation-for="DovizKuru" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="IndirimOrani" class="control-label">İndirim Oranı (%)</label>
+                <input asp-for="IndirimOrani" class="form-control" type="number" step="0.1" />
+                <span asp-validation-for="IndirimOrani" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="VadeSayisi" class="control-label">Vade Sayısı</label>
+                <input asp-for="VadeSayisi" class="form-control" type="number" />
+                <span asp-validation-for="VadeSayisi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="OdemePlani" class="control-label">Ödeme Planı</label>
+                <input asp-for="OdemePlani" class="form-control" placeholder="Örn: 30-30-40" />
+                <span asp-validation-for="OdemePlani" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="SonGecerlilikTarihi" class="control-label">Son Geçerlilik Tarihi</label>
+                <input asp-for="SonGecerlilikTarihi" class="form-control" type="date" />
+                <span asp-validation-for="SonGecerlilikTarihi" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="ImzaDurumu" class="control-label">İmza Durumu</label>
+                <select asp-for="ImzaDurumu" class="form-control">
+                    <option value="">-- Seçin --</option>
+                    <option value="Alındı">Alındı</option>
+                    <option value="Alınmadı">Alınmadı</option>
+                </select>
+                <span asp-validation-for="ImzaDurumu" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group">
+                <label asp-for="UcretsizVerilenMetrekare" class="control-label">Ücretsiz Verilen Metrekare</label>
+                <input asp-for="UcretsizVerilenMetrekare" class="form-control" type="number" step="0.1" />
+                <span asp-validation-for="UcretsizVerilenMetrekare" class="text-danger"></span>
+            </div>
+            
+            <div class="form-group mt-3">
+                <input type="submit" value="Kaydet" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} 
