@@ -42,7 +42,10 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Create()
         {
-            ViewData["SozlesmeId"] = new SelectList(await _context.Sozlesmeler.Select(s => new { s.Id, SozlesmeAdi = $"Sözleşme {s.Id} - {s.Firma?.Ad}" }).ToListAsync(), "Id", "SozlesmeAdi");
+            ViewData["SozlesmeId"] = new SelectList(await _context.Sozlesmeler
+                .Include(s => s.Firma)
+                .Select(s => new { s.Id, SozlesmeAdi = $"Sözleşme {s.Id} - {s.Firma.Ad}" })
+                .ToListAsync(), "Id", "SozlesmeAdi");
             return View();
         }
 

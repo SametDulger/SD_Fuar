@@ -55,6 +55,7 @@ namespace SD_Fuar.Controllers
         {
             var ziyaretciRaporu = await _context.Ziyaretciler
                 .Include(z => z.Fuar)
+                .Where(z => z.Fuar != null)
                 .OrderByDescending(z => z.ZiyaretTarihi)
                 .ToListAsync();
 

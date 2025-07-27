@@ -4,13 +4,10 @@ using SD_Fuar.Models;
 
 namespace SD_Fuar.Controllers
 {
-    public class FirmaController : Controller
+    public class FirmaController : BaseController
     {
-        private readonly SD_FuarContext _context;
-
-        public FirmaController(SD_FuarContext context)
+        public FirmaController(SD_FuarContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<IActionResult> Index()
@@ -20,13 +17,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var firma = await _context.Firmalar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var firma = await GetEntityByIdAsync<Firma>(id);
             if (firma == null)
             {
                 return NotFound();
@@ -55,12 +46,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var firma = await _context.Firmalar.FindAsync(id);
+            var firma = await GetEntityByIdAsync<Firma>(id);
             if (firma == null)
             {
                 return NotFound();
@@ -86,7 +72,7 @@ namespace SD_Fuar.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FirmaExists(firma.Id))
+                    if (!EntityExists<Firma>(firma.Id))
                     {
                         return NotFound();
                     }
@@ -102,13 +88,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var firma = await _context.Firmalar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var firma = await GetEntityByIdAsync<Firma>(id);
             if (firma == null)
             {
                 return NotFound();
@@ -121,19 +101,14 @@ namespace SD_Fuar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var firma = await _context.Firmalar.FindAsync(id);
+            var firma = await GetEntityByIdAsync<Firma>(id);
             if (firma != null)
             {
                 _context.Firmalar.Remove(firma);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool FirmaExists(int id)
-        {
-            return _context.Firmalar.Any(e => e.Id == id);
         }
     }
 } 

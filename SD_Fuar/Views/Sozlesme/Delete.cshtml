@@ -14,16 +14,16 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-3">Firma</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Firma.Ad)</dd>
+        <dd class="col-sm-9">@(Model.Firma?.Ad ?? "Belirtilmemiş")</dd>
         
         <dt class="col-sm-3">Fuar</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Fuar.Ad)</dd>
+        <dd class="col-sm-9">@(Model.Fuar?.Ad ?? "Belirtilmemiş")</dd>
         
         <dt class="col-sm-3">Salon</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Salon.Ad)</dd>
+        <dd class="col-sm-9">@(Model.Salon?.Ad ?? "Belirtilmemiş")</dd>
         
         <dt class="col-sm-3">Stand</dt>
-        <dd class="col-sm-9">@Html.DisplayFor(model => model.Stand.Kod)</dd>
+        <dd class="col-sm-9">@(Model.Stand?.Kod ?? "Belirtilmemiş")</dd>
         
         <dt class="col-sm-3">@Html.DisplayNameFor(model => model.Tarih)</dt>
         <dd class="col-sm-9">@Model.Tarih.ToString("dd.MM.yyyy")</dd>

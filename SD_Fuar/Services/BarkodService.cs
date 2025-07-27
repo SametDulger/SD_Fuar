@@ -23,8 +23,8 @@ namespace SD_Fuar.Services
             var hash = SHA256.HashData(Encoding.UTF8.GetBytes(barkodVerisi));
             var barkod = Convert.ToBase64String(hash)
                 .Substring(0, BARKOD_LENGTH)
-                .Replace(REPLACE_CHAR_1, string.Empty)
-                .Replace(REPLACE_CHAR_2, string.Empty);
+                .Replace(REPLACE_CHAR_1.ToString(), "")
+                .Replace(REPLACE_CHAR_2.ToString(), "");
             return barkod;
         }
 
@@ -39,8 +39,8 @@ namespace SD_Fuar.Services
             var hash = SHA256.HashData(Encoding.UTF8.GetBytes(barkodVerisi));
             var barkod = Convert.ToBase64String(hash)
                 .Substring(0, BARKOD_LENGTH)
-                .Replace(REPLACE_CHAR_1, string.Empty)
-                .Replace(REPLACE_CHAR_2, string.Empty);
+                .Replace(REPLACE_CHAR_1.ToString(), "")
+                .Replace(REPLACE_CHAR_2.ToString(), "");
             return barkod;
         }
 
@@ -60,8 +60,8 @@ namespace SD_Fuar.Services
             var hash = SHA256.HashData(Encoding.UTF8.GetBytes(barkodVerisi));
             var barkod = Convert.ToBase64String(hash)
                 .Substring(0, BARKOD_LENGTH)
-                .Replace(REPLACE_CHAR_1, string.Empty)
-                .Replace(REPLACE_CHAR_2, string.Empty);
+                .Replace(REPLACE_CHAR_1.ToString(), "")
+                .Replace(REPLACE_CHAR_2.ToString(), "");
             return barkod;
         }
 
@@ -75,8 +75,8 @@ namespace SD_Fuar.Services
             var hash = SHA256.HashData(Encoding.UTF8.GetBytes(beklenenVeri));
             var beklenenBarkod = Convert.ToBase64String(hash)
                 .Substring(0, BARKOD_LENGTH)
-                .Replace(REPLACE_CHAR_1, string.Empty)
-                .Replace(REPLACE_CHAR_2, string.Empty);
+                .Replace(REPLACE_CHAR_1.ToString(), "")
+                .Replace(REPLACE_CHAR_2.ToString(), "");
             return barkod == beklenenBarkod;
         }
     }

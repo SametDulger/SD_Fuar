@@ -1,0 +1,137 @@
+# SD_Fuar - Fuar Yönetim Sistemi .gitignore
+
+# .NET Core / ASP.NET Core
+bin/
+obj/
+*.user
+*.userosscache
+*.suo
+*.userprefs
+*.DotSettings
+*.DotSettings.user
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+msbuild.log
+msbuild.err
+msbuild.wrn
+
+# Visual Studio
+.vs/
+*.ncrunch*
+*.ncrunchsolution
+*.sln.docstates
+
+# Visual Studio Code
+.vscode/
+*.code-workspace
+
+# JetBrains Rider
+.idea/
+*.sln.iml
+
+# Veritabanı Dosyaları
+*.db
+*.db-shm
+*.db-wal
+sd_fuar.db
+sd_fuar.db-shm
+sd_fuar.db-wal
+
+# Log ve Cache Dosyaları
+logs/
+*.log
+*.log.*
+log/
+Logs/
+*.tlog
+*.tmp
+*.temp
+*.cache
+
+# Environment Variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+appsettings.Production.json
+appsettings.Staging.json
+
+# IDE ve Editör Dosyaları
+*.swp
+*.swo
+*~
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+
+# İşletim Sistemi Dosyaları
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# Yedekleme ve Arşiv Dosyaları
+*.bak
+*.backup
+*.old
+*.orig
+*.save
+*.zip
+*.tar.gz
+*.rar
+*.7z
+
+# SD_Fuar Özel Dosyaları
+temp/
+tmp/
+Reports/
+Migrations/
+*.pdf
+*.xlsx
+*.csv
+*.png
+*.jpg
+*.jpeg
+*.perf
+*.trace
+*.dmp
+*.mdmp
+
+# Güvenlik ve Hassas Bilgiler
+*.pfx
+*.p12
+*.key
+*.crt
+*.cer
+passwords.txt
+secrets.json
+*.secret
+connectionstrings.json
+database.config
+user.config
+app.config 

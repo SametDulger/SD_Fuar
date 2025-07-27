@@ -27,10 +27,10 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>@Html.DisplayFor(modelItem => item.Firma.Ad)</td>
-            <td>@Html.DisplayFor(modelItem => item.Fuar.Ad)</td>
-            <td>@Html.DisplayFor(modelItem => item.Salon.Ad)</td>
-            <td>@Html.DisplayFor(modelItem => item.Stand.Kod)</td>
+            <td>@(item.Firma?.Ad ?? "Belirtilmemiş")</td>
+            <td>@(item.Fuar?.Ad ?? "Belirtilmemiş")</td>
+            <td>@(item.Salon?.Ad ?? "Belirtilmemiş")</td>
+            <td>@(item.Stand?.Kod ?? "Belirtilmemiş")</td>
             <td>@item.Tarih.ToString("dd.MM.yyyy")</td>
             <td>@Html.DisplayFor(modelItem => item.Metrekare) m²</td>
             <td>@Html.DisplayFor(modelItem => item.BirimFiyat)</td>

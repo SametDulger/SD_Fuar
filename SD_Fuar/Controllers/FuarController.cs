@@ -4,13 +4,10 @@ using SD_Fuar.Models;
 
 namespace SD_Fuar.Controllers
 {
-    public class FuarController : Controller
+    public class FuarController : BaseController
     {
-        private readonly SD_FuarContext _context;
-
-        public FuarController(SD_FuarContext context)
+        public FuarController(SD_FuarContext context) : base(context)
         {
-            _context = context;
         }
 
         public async Task<IActionResult> Index()
@@ -20,13 +17,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fuar = await _context.Fuarlar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var fuar = await GetEntityByIdAsync<Fuar>(id);
             if (fuar == null)
             {
                 return NotFound();
@@ -55,12 +46,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fuar = await _context.Fuarlar.FindAsync(id);
+            var fuar = await GetEntityByIdAsync<Fuar>(id);
             if (fuar == null)
             {
                 return NotFound();
@@ -86,7 +72,7 @@ namespace SD_Fuar.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!FuarExists(fuar.Id))
+                    if (!EntityExists<Fuar>(fuar.Id))
                     {
                         return NotFound();
                     }
@@ -102,13 +88,7 @@ namespace SD_Fuar.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var fuar = await _context.Fuarlar
-                .FirstOrDefaultAsync(m => m.Id == id);
+            var fuar = await GetEntityByIdAsync<Fuar>(id);
             if (fuar == null)
             {
                 return NotFound();
@@ -121,19 +101,14 @@ namespace SD_Fuar.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var fuar = await _context.Fuarlar.FindAsync(id);
+            var fuar = await GetEntityByIdAsync<Fuar>(id);
             if (fuar != null)
             {
                 _context.Fuarlar.Remove(fuar);
+                await _context.SaveChangesAsync();
             }
 
-            await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool FuarExists(int id)
-        {
-            return _context.Fuarlar.Any(e => e.Id == id);
         }
     }
 } 
