@@ -178,10 +178,11 @@ namespace SD_Fuar.Controllers
         {
             var rapor = await _context.Biletler
                 .Include(b => b.Fuar)
-                .GroupBy(b => new { b.Fuar.Ad, b.Tip, b.OdemeTipi })
+                .Where(b => b.Fuar != null && !string.IsNullOrEmpty(b.Fuar.Ad))
+                .GroupBy(b => new { FuarAdi = b.Fuar.Ad, b.Tip, b.OdemeTipi })
                 .Select(g => new
                 {
-                    FuarAdi = g.Key.Ad,
+                    FuarAdi = g.Key.FuarAdi,
                     BiletTipi = g.Key.Tip,
                     OdemeTipi = g.Key.OdemeTipi,
                     SatisAdedi = g.Count(),
